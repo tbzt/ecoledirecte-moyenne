@@ -1,0 +1,279 @@
+:root {
+    --light-primary-color: #0f8fd1;
+    --hover-primary-color: #aad8ea;
+    --secondary-color: #cd1478;
+    --light-secondary-color: #e46bad;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    font-family: Tahoma, Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0 solid;
+}
+
+.noselect, .message {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#box {
+    width: 100%;
+    max-width: 700px;
+    background-color: white;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px grey;
+}
+
+#info-text {
+    color: var(--light-primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+.form-container {
+    width: 100%;
+}
+
+.fields, #submit {
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: thin solid grey;
+    border-radius: 5px;
+}
+
+.fields:disabled {
+    background-color: whitesmoke;
+    cursor: not-allowed;
+    transition: background-color 125ms;
+}
+
+.form-container input::placeholder {
+    font-size: small;
+}
+
+#username {
+    margin-bottom: 10px;
+}
+
+#password {
+    margin-bottom: 5px;
+}
+
+#toggleSVG {
+    vertical-align: middle;
+    margin-right: 5px;
+    height: 10px;
+    fill: white;
+}
+
+#toggleButton {
+    background-color: var(--light-primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.checkbox {
+    display: block;
+    margin: 10px 0 20px 0;
+    font-size: small;
+}
+
+.anonymous-container {
+    display: none;
+}
+
+#submit {
+    background-color: var(--light-primary-color);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 125ms
+}
+
+#submit:disabled {
+    background-color: var(--hover-primary-color);
+    border: initial;
+    cursor: wait;
+}
+
+#reset {
+    display: none;
+    margin: 10px 0;
+    color: grey;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+#periodes-container:empty {
+    margin: 0;
+}
+
+#periodes-container {
+    margin-top: 30px;
+}
+
+#periodes {
+    width: 100%;
+    border-radius: 1em;
+    border-collapse: separate;
+    background-color: lightgrey;
+    border: 1px solid grey;
+}
+
+#periodes td, #periodes th {
+    padding: 10px;
+    text-align: center;
+}
+
+#periodes td::after {
+    display: none;
+    content: "test";
+    position: relative;
+    bottom: 10px;
+    left: 3px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 450px) {
+    #box {
+        box-shadow: none;
+        background: none;
+        padding: 0;
+    }
+
+    #save {
+        font-size: 0.7em;
+    }
+}
+
+button {
+    touch-action: manipulation;
+}
+
+#message-container {
+    margin: 5px auto;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+    gap: 3px;
+    align-items: center;
+}
+
+.message {
+    max-width: 500px;
+    margin: 10px;
+    animation: appear 0.25s ease-in-out;
+    background-color: darkgrey;
+    color: white;
+    border: 1px solid dimgrey;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.close {
+    animation: disappear 0.25s ease-in-out;
+}
+
+.message::after {
+    display: inline-block;
+    content: "\00d7";
+    color: lightgrey;
+    margin: 0 0 0 5px;
+}
+
+.message:hover::after {
+    color: white
+}
+
+#submit.whenError {
+    animation: shake 0.25s;
+    animation-iteration-count: 2;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+@keyframes shake {
+  0% { transform: translateX(1px); }
+  10% { transform: translateX(-1px); }
+  20% { transform: translateX(-3px); }
+  30% { transform: translateX(3px); }
+  40% { transform: translateX(1px); }
+  50% { transform: translateX(-1px); }
+  60% { transform: translateX(-3px); }
+  70% { transform: translateX(3px); }
+  80% { transform: translateX(-1px); }
+  90% { transform: translateX(1px); }
+  100% { transform: translateX(1px); }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
